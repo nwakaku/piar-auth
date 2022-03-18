@@ -3,14 +3,14 @@ import "./admin.css";
 import UserService from "../services/user.service";
 import { Link } from "react-router-dom";
 
-const AdminUtils = () => {
-  const [users, setUsers] = useState([]);
+const AdminService = () => {
+  const [station, setStation] = useState([]);
 
   useEffect(() => {
-    UserService.getUserBoard().then(
+    UserService.getStationsBoard().then(
       (response) => {
         console.log(response.data);
-        setUsers(response.data);
+        setStation(response.data);
       },
       (error) => {
         const resMessage =
@@ -19,12 +19,10 @@ const AdminUtils = () => {
             error.response.data.message) ||
           error.message ||
           error.toString();
-        setUsers(resMessage);
-        alert(users);
+        setStation(resMessage);
       }
     );
   }, []);
-
   return (
     <>
       <div class="sidebar">
@@ -34,10 +32,12 @@ const AdminUtils = () => {
         </div>
         <ul class="nav-links">
           <li>
-            <a href="#" class="active">
-              <i class="bx bx-grid-alt"></i>
-              <span class="links_name">List Users</span>
-            </a>
+            <Link to="/Pageadmin">
+              <a>
+                <i class="bx bx-grid-alt"></i>
+                <span class="links_name">List Users</span>
+              </a>
+            </Link>
           </li>
           <li>
             <Link to="/admincreate">
@@ -60,12 +60,10 @@ const AdminUtils = () => {
             </a>
           </li>
           <li>
-            <Link to="/adminservice">
-              <a>
-                <i class="bx bx-coin-stack"></i>
-                <span class="links_name">Stations</span>
-              </a>
-            </Link>
+            <a href="#" class="active">
+              <i class="bx bx-coin-stack"></i>
+              <span class="links_name">Stations</span>
+            </a>
           </li>
           <li>
             <Link to="/create_service">
@@ -181,7 +179,7 @@ const AdminUtils = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {users.map((item) => (
+                  {station.map((item) => (
                     <tr>
                       <td data-aria-label="ID">{item.id} </td>
                       <td data-aria-label="Name">{item.name}</td>
@@ -279,4 +277,4 @@ const AdminUtils = () => {
   );
 };
 
-export default AdminUtils;
+export default AdminService;

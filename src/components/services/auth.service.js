@@ -1,5 +1,7 @@
 import axios from "axios";
 const API_URL = "https://piar.meew.me/users";
+const SERVICE_URL = "https://piar.meew.me/stations";
+
 class AuthService {
   login = (login, password) => {
     return axios
@@ -8,8 +10,8 @@ class AuthService {
         password,
       })
       .then((response) => {
-        if (response.data.accessToken) {
-          localStorage.setItem("user", JSON.stringify(response.data));
+        if (response.data.user_jwt) {
+          localStorage.setItem("user", response.data.user_jwt);
         }
         return response.data;
       })
@@ -29,8 +31,11 @@ class AuthService {
       password,
     });
   };
+
   getCurrentUser() {
     return JSON.parse(localStorage.getItem("user"));
   }
+
+  //stations
 }
 export default new AuthService();

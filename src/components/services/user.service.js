@@ -19,12 +19,16 @@ class UserService {
   }
   // separate file
 
-  updateUser(user, userId) {
-    return axios.patch(API_URL + userId, { headers });
+  async updateUser(user, userId) {
+    return await axios.patch(API_URL + "users/" + userId, { headers });
   }
 
-  deleteUser(userId) {
-    return axios.delete(API_URL + userId, { headers });
+  async deleteUser(userId) {
+    console.log(userId)
+    const result = await axios.delete(API_URL + "users/"+ userId, { headers })
+    console.log(result)
+    return result.data;
+    
   }
 
   //stations

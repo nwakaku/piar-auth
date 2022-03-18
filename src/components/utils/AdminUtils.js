@@ -5,6 +5,21 @@ import { Link } from "react-router-dom";
 
 const AdminUtils = () => {
   const [users, setUsers] = useState([]);
+  const [userdeleted, setUserdeleted] = useState([]);
+
+  const deletedUser = async (id) => { 
+    const response = await UserService.deleteUser(id)
+    console.log(response);
+    setUserdeleted(response);
+    // window.location.reload(false)
+  }
+
+  const updateUser = async (id) => {
+    const response = await UserService.updateUser(id);
+    
+    console.log(response)
+  }
+
 
   useEffect(() => {
     UserService.getUserBoard().then(
@@ -168,7 +183,8 @@ const AdminUtils = () => {
           </div>
 
           <div class="sales-boxes">
-            <div className="table-container">
+            <div className="table-container"> 
+            <p>{userdeleted.name}</p>
               <table className="table">
                 <thead>
                   <tr>
@@ -187,21 +203,22 @@ const AdminUtils = () => {
                       <td data-aria-label="Name">{item.name}</td>
                       <td data-aria-label="Comment">{item.comment}</td>
                       <td data-aria-label="Update">
-                        <a
-                          href="https://web.facebook.com/pst.ndukwendukwe"
+                        <button
+                          // href="https://web.facebook.com/pst.ndukwendukwe"
                           className="btny"
+                          onClick={(e) => updateUser(item.id)}
                         >
                           Update
-                        </a>
+                        </button>
                       </td>
                       <td data-aria-label="Delete">
                         <span className="text_open">
-                          <a
-                            href="https://web.facebook.com/pst.ndukwendukwe"
+                          <button
+                            // href="https://web.facebook.com/pst.ndukwendukwe"
                             className="btny delete"
-                          >
+                          onClick={(e) => deletedUser(item.id)}>
                             Delete
-                          </a>
+                          </button>
                         </span>
                       </td>
                       <td data-aria-label="View">

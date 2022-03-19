@@ -3,22 +3,21 @@ import "./admin.css";
 import UserService from "../services/user.service";
 import { Link, useHistory } from "react-router-dom";
 
-const AdminUtils = ({ id, setId }) => {
+const AdminUtils = ({ id, setId, setViewUser, viewUser }) => {
   const [users, setUsers] = useState([]);
-  const [viewUser, setViewUser] = useState([]);
   let history = useHistory();
 
   const deletedUser = async (id) => {
     const response = await UserService.deleteUser(id);
     console.log(response);
-    // window.location.reload(false)
+    window.location.reload(false);
   };
 
   const ViewUser = async (id) => {
     // console.log(id);
     const response = await UserService.getUserById(id);
     setViewUser(response.data);
-    console.log(response);
+    history.push("/view_user");
   };
 
   useEffect(() => {
@@ -48,7 +47,7 @@ const AdminUtils = ({ id, setId }) => {
         </div>
         <ul class="nav-links">
           <li>
-            <a href="#" class="active">
+            <a class="active">
               <i class="bx bx-grid-alt"></i>
               <span class="links_name">List Users</span>
             </a>
@@ -62,13 +61,13 @@ const AdminUtils = ({ id, setId }) => {
             </Link>
           </li>
           <li>
-            <a href="#">
+            <a>
               <i class="bx bx-list-ul"></i>
               <span class="links_name">Edit Users</span>
             </a>
           </li>
           <li>
-            <a href="#">
+            <a>
               <i class="bx bx-pie-chart-alt-2"></i>
               <span class="links_name">Delete Users</span>
             </a>
@@ -90,26 +89,26 @@ const AdminUtils = ({ id, setId }) => {
             </Link>
           </li>
           <li>
-            <a href="#">
+            <a>
               <i class="bx bx-user"></i>
               <span class="links_name">Edit Station</span>
             </a>
           </li>
           <li>
-            <a href="#">
+            <a>
               <i class="bx bx-message"></i>
               <span class="links_name">Delete Station</span>
             </a>
           </li>
 
           <li>
-            <a href="#">
+            <a>
               <i class="bx bx-cog"></i>
               <span class="links_name">Setting</span>
             </a>
           </li>
           <li class="log_out">
-            <a href="#">
+            <a>
               <i class="bx bx-log-out"></i>
               <span class="links_name">Log out</span>
             </a>
@@ -183,7 +182,6 @@ const AdminUtils = ({ id, setId }) => {
 
           <div class="sales-boxes">
             <div className="table-container">
-              <p>{viewUser.name}</p>
               <table className="table">
                 <thead>
                   <tr>
@@ -246,49 +244,49 @@ const AdminUtils = ({ id, setId }) => {
               <div class="title">Top Seling Product</div>
               <ul class="top-sales-details">
                 <li>
-                  <a href="#">
+                  <a>
                     <img src="images/sunglasses.jpg" alt="" />
                     <span class="product">Vuitton Sunglasses</span>
                   </a>
                   <span class="price">$1107</span>
                 </li>
                 <li>
-                  <a href="#">
+                  <a>
                     <img src="images/jeans.jpg" alt="" />
                     <span class="product">Hourglass Jeans </span>
                   </a>
                   <span class="price">$1567</span>
                 </li>
                 <li>
-                  <a href="#">
+                  <a>
                     <img src="images/nike.jpg" alt="" />
                     <span class="product">Nike Sport Shoe</span>
                   </a>
                   <span class="price">$1234</span>
                 </li>
                 <li>
-                  <a href="#">
+                  <a>
                     <img src="images/scarves.jpg" alt="" />
                     <span class="product">Hermes Silk Scarves.</span>
                   </a>
                   <span class="price">$2312</span>
                 </li>
                 <li>
-                  <a href="#">
+                  <a>
                     <img src="images/blueBag.jpg" alt="" />
                     <span class="product">Succi Ladies Bag</span>
                   </a>
                   <span class="price">$1456</span>
                 </li>
                 <li>
-                  <a href="#">
+                  <a>
                     <img src="images/addidas.jpg" alt="" />
                     <span class="product">Addidas Running Shoe</span>
                   </a>
                   <span class="price">$2345</span>
                 </li>
                 <li>
-                  <a href="#">
+                  <a>
                     <img src="images/shirt.jpg" alt="" />
                     <span class="product">Bilack Wear's Shirt</span>
                   </a>

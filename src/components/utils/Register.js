@@ -22,7 +22,7 @@ const Register = () => {
             values.password
           ).then(
             (response) => {
-              history.push("/Pageadmin");
+              history.push("/dashboard");
               setLoading(true);
               setErrMessage(response.data.message);
             },

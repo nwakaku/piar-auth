@@ -20,7 +20,7 @@ const PageRegister = () => {
               ex ratione. Aliquid!
             </p>
             <button class="btn transparent" id="sign-up-btn">
-              <Link to="/">Sign in</Link>
+              <Link to="/login">Sign in</Link>
             </button>
           </div>
           <img src={image} class="image" alt="" />

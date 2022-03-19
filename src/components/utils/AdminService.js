@@ -1,10 +1,24 @@
 import React, { useEffect, useState } from "react";
 import "./admin.css";
 import UserService from "../services/user.service";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
-const AdminService = () => {
+const AdminService = ({ setViewUser, setId }) => {
   const [station, setStation] = useState([]);
+  let history = useHistory();
+
+  const deletedStation = async (id) => {
+    const response = await UserService.deleteStation(id);
+    console.log(response);
+    window.location.reload(false);
+  };
+
+  const ViewStation = async (id) => {
+    console.log(id);
+    const response = await UserService.getStationById(id);
+    setViewUser(response.data);
+    history.push("/station_user");
+  };
 
   useEffect(() => {
     UserService.getStationsBoard().then(
@@ -186,8 +200,12 @@ const AdminService = () => {
                       <td data-aria-label="Comment">{item.comment}</td>
                       <td data-aria-label="Update">
                         <a
-                          href="https://web.facebook.com/pst.ndukwendukwe"
+                          // href="https://web.facebook.com/pst.ndukwendukwe"
                           className="btny"
+                          onClick={(e) => {
+                            setId(item.id);
+                            history.push("/update_station");
+                          }}
                         >
                           Update
                         </a>
@@ -195,8 +213,9 @@ const AdminService = () => {
                       <td data-aria-label="Delete">
                         <span className="text_open">
                           <a
-                            href="https://web.facebook.com/pst.ndukwendukwe"
+                            // href="https://web.facebook.com/pst.ndukwendukwe"
                             className="btny delete"
+                            onClick={(e) => deletedStation(item.id)}
                           >
                             Delete
                           </a>
@@ -204,7 +223,8 @@ const AdminService = () => {
                       </td>
                       <td data-aria-label="View">
                         <a
-                          href="https://web.facebook.com/pst.ndukwendukwe"
+                          onClick={(e) => ViewStation(item.id)}
+                          // href="https://web.facebook.com/pst.ndukwendukwe"
                           className="btny"
                         >
                           View

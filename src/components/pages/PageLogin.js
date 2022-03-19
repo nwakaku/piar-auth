@@ -21,7 +21,7 @@ const PageLogin = () => {
               ex ratione. Aliquid!
             </p>
             <button class="btn transparent" id="sign-up-btn">
-              <Link to="/register">Sign up</Link>
+              <Link to="/">Sign up</Link>
             </button>
           </div>
           <img src={image} class="image" alt="" />

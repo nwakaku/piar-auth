@@ -58,6 +58,31 @@ class UserService {
       { headers }
     );
   };
+
+  async updateStation(userId, { name, comment }) {
+    console.log(userId, name, comment);
+    const response = await axios.patch(
+      API_URL + "stations/" + userId,
+      { name, comment },
+      { headers }
+    );
+    console.log(response);
+    return response;
+  }
+
+  async getStationById(userId) {
+    console.log(userId);
+    return await axios.get(API_URL + "stations/" + userId, { headers });
+  }
+
+  async deleteStation(userId) {
+    console.log(userId);
+    const result = await axios.delete(API_URL + "stations/" + userId, {
+      headers,
+    });
+    console.log(result);
+    return result.data;
+  }
 }
 
 export default new UserService();

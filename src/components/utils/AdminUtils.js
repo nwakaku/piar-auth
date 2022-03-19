@@ -126,7 +126,7 @@ const AdminUtils = ({ id, setId, setViewUser, viewUser }) => {
             <i class="bx bx-search"></i>
           </div>
           <div class="profile-details">
-            <img src="images/profile.jpg" alt="" />
+            <img src="https://source.unsplash.com/random/300×300/?man" alt="" />
             <span class="admin_name">Users</span>
             <i class="bx bx-chevron-down"></i>
           </div>
@@ -245,49 +245,70 @@ const AdminUtils = ({ id, setId, setViewUser, viewUser }) => {
               <ul class="top-sales-details">
                 <li>
                   <a>
-                    <img src="images/sunglasses.jpg" alt="" />
+                    <img
+                      src="https://source.unsplash.com/random/300×300/?car"
+                      alt=""
+                    />
                     <span class="product">Vuitton Sunglasses</span>
                   </a>
                   <span class="price">$1107</span>
                 </li>
                 <li>
                   <a>
-                    <img src="images/jeans.jpg" alt="" />
+                    <img
+                      src="https://source.unsplash.com/random/300×300/?watch"
+                      alt=""
+                    />
                     <span class="product">Hourglass Jeans </span>
                   </a>
                   <span class="price">$1567</span>
                 </li>
                 <li>
                   <a>
-                    <img src="images/nike.jpg" alt="" />
+                    <img
+                      src="https://source.unsplash.com/random/300×300/?toy"
+                      alt=""
+                    />
                     <span class="product">Nike Sport Shoe</span>
                   </a>
                   <span class="price">$1234</span>
                 </li>
                 <li>
                   <a>
-                    <img src="images/scarves.jpg" alt="" />
+                    <img
+                      src="https://source.unsplash.com/random/300×300/?glass"
+                      alt=""
+                    />
                     <span class="product">Hermes Silk Scarves.</span>
                   </a>
                   <span class="price">$2312</span>
                 </li>
                 <li>
                   <a>
-                    <img src="images/blueBag.jpg" alt="" />
+                    <img
+                      src="https://source.unsplash.com/random/300×300/?woman"
+                      alt=""
+                    />
                     <span class="product">Succi Ladies Bag</span>
                   </a>
                   <span class="price">$1456</span>
                 </li>
                 <li>
                   <a>
-                    <img src="images/addidas.jpg" alt="" />
+                    <img
+                      src="https://source.unsplash.com/random/300×300/?kite"
+                      alt=""
+                    />
                     <span class="product">Addidas Running Shoe</span>
                   </a>
                   <span class="price">$2345</span>
                 </li>
                 <li>
                   <a>
-                    <img src="images/shirt.jpg" alt="" />
+                    <img
+                      src="https://source.unsplash.com/random/300×300/?jug"
+                      alt=""
+                    />
                     <span class="product">Bilack Wear's Shirt</span>
                   </a>
                   <span class="price">$1245</span>

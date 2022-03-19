@@ -1,30 +1,29 @@
 import React, { useEffect, useState } from "react";
 import "./admin.css";
 import UserService from "../services/user.service";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
-const AdminUtils = () => {
+const AdminUtils = ({ id, setId }) => {
   const [users, setUsers] = useState([]);
-  const [userdeleted, setUserdeleted] = useState([]);
+  const [viewUser, setViewUser] = useState([]);
+  let history = useHistory();
 
-  const deletedUser = async (id) => { 
-    const response = await UserService.deleteUser(id)
+  const deletedUser = async (id) => {
+    const response = await UserService.deleteUser(id);
     console.log(response);
-    setUserdeleted(response);
     // window.location.reload(false)
-  }
+  };
 
-  const updateUser = async (id) => {
-    const response = await UserService.updateUser(id);
-    
-    console.log(response)
-  }
-
+  const ViewUser = async (id) => {
+    // console.log(id);
+    const response = await UserService.getUserById(id);
+    setViewUser(response.data);
+    console.log(response);
+  };
 
   useEffect(() => {
     UserService.getUserBoard().then(
       (response) => {
-        console.log(response.data);
         setUsers(response.data);
       },
       (error) => {
@@ -183,8 +182,8 @@ const AdminUtils = () => {
           </div>
 
           <div class="sales-boxes">
-            <div className="table-container"> 
-            <p>{userdeleted.name}</p>
+            <div className="table-container">
+              <p>{viewUser.name}</p>
               <table className="table">
                 <thead>
                   <tr>
@@ -206,7 +205,10 @@ const AdminUtils = () => {
                         <button
                           // href="https://web.facebook.com/pst.ndukwendukwe"
                           className="btny"
-                          onClick={(e) => updateUser(item.id)}
+                          onClick={(e) => {
+                            setId(item.id);
+                            history.push("/update_user");
+                          }}
                         >
                           Update
                         </button>
@@ -216,18 +218,23 @@ const AdminUtils = () => {
                           <button
                             // href="https://web.facebook.com/pst.ndukwendukwe"
                             className="btny delete"
-                          onClick={(e) => deletedUser(item.id)}>
+                            onClick={(e) => deletedUser(item.id)}
+                          >
                             Delete
                           </button>
                         </span>
                       </td>
                       <td data-aria-label="View">
-                        <a
-                          href="https://web.facebook.com/pst.ndukwendukwe"
+                        <button
+                          // href="https://web.facebook.com/pst.ndukwendukwe"
                           className="btny"
+                          onClick={(e) => {
+                            ViewUser(item.id);
+                            console.log(item.id);
+                          }}
                         >
                           View
-                        </a>
+                        </button>
                       </td>
                     </tr>
                   ))}

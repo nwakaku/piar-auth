@@ -31,7 +31,7 @@ const Login = () => {
                 error.message ||
                 error.toString();
               setLoading(true);
-              setErrMessage(resMessage);
+              setErrMessage("user not found register first");
             }
           );
         }}

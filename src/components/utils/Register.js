@@ -34,7 +34,7 @@ const Register = () => {
                 error.message ||
                 error.toString();
               setLoading(true);
-              setErrMessage(resMessage);
+              setErrMessage("could not register have you registered before");
             }
           );
         }}
